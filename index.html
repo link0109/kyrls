@@ -1,371 +1,249 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<link rel="manifest" href="manifest.json">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دفتر الحجوزات  | Booking Manager</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f1014;
-      --card: #1c1d27;
-      --border: #343541;
-      --teal: #08d6c5;
-      --text: #f6f6f8;
-      --muted: #aaaab7;
-      --green: #55c878;
-      --orange: #ff9c32;
-      --red: #ff5252;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; background: var(--bg); color: var(--text);
-      font-family: 'Cairo', Arial, sans-serif;
-    }
-    .app { max-width: 900px; margin: auto; padding: 16px; }
-
-    .hero {
-      padding: 18px 12px; text-align: center;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 18px; margin-bottom: 14px;
-    }
-    .hero h1 { color: var(--teal); font-size: 22px; margin: 0 0 4px; font-weight: 900; }
-    .hero p { color: var(--muted); margin: 0; font-size: 13px; }
-
-    .actions {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 10px; margin-bottom: 14px;
-    }
-    button {
-      border: 0; border-radius: 12px; padding: 12px 8px;
-      font-size: 13px; font-weight: bold; cursor: pointer;
-      font-family: 'Cairo', sans-serif;
-    }
-    .primary { background: var(--teal); color: #061715; }
-    .dark-btn { background: var(--card); color: white; border: 1px solid var(--border); }
-
-    .stats-header {
-      margin-bottom: 8px; padding: 0 4px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .stat {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 14px; padding: 10px 12px;
-      display: flex; flex-direction: column; justify-content: center;
-      height: 80px;
-    }
-    .stat .label { color: var(--muted); font-size: 11px; }
-    .stat .number { font-size: 16px; font-weight: bold; margin-top: 4px; }
-    .teal { border-right: 4px solid var(--teal); }
-    .green { border-right: 4px solid var(--green); }
-    .orange { border-right: 4px solid var(--orange); }
-    .red { border-right: 4px solid var(--red); }
-
-    .panel {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 18px; margin-bottom: 16px;
-    }
-    h2 { font-size: 16px; margin: 0 0 12px; color: var(--teal); }
-
-    .form-group { margin-bottom: 10px; }
-    label { display: block; color: rgba(255,255,255,0.85); margin-bottom: 4px; font-size: 12px; font-weight: 600; }
-    input, select {
-      width: 100%; padding: 10px; border-radius: 8px;
-      border: 1px solid #414250; background: #101116;
-      color: white; font-size: 13px; outline: none;
-      font-family: 'Cairo', sans-serif;
-    }
-    input:focus, select:focus { border-color: var(--teal); }
-
-    .hidden { display: none !important; }
-
-    .table-wrap { overflow-x: auto; margin-top: 10px; }
-    table { width: 100%; border-collapse: collapse; min-width: 650px; }
-    th, td {
-      border-bottom: 1px solid var(--border);
-      padding: 10px 8px; text-align: right; font-size: 12px;
-      white-space: nowrap;
-    }
-    th { color: var(--teal); background: #15161d; }
-
-    .badge-btn {
-      padding: 3px 8px; border-radius: 6px; cursor: pointer;
-      font-size: 11px; font-weight: bold; display: inline-block;
-    }
-    .edit-btn { background: rgba(8, 214, 197, 0.15); color: var(--teal); border: 1px solid var(--teal); }
-    .del-btn { background: rgba(255, 82, 82, 0.15); color: var(--red); border: 1px solid var(--red); }
-
-    /* Modal */
-    .modal-overlay {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85); z-index: 999;
-      justify-content: center; align-items: center; padding: 15px;
-    }
-    .modal-box {
-      background: var(--card); border: 1px solid var(--teal);
-      padding: 18px; border-radius: 14px; width: 100%; max-width: 320px; text-align: center;
-    }
-    .modal-box h3 { color: var(--teal); margin: 0 0 10px; font-size: 15px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELMOKADEM - My Right Hand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --primary-color: #d4af37;
+            --text-main: #333333;
+            --text-secondary: #777777;
+            --danger-color: #e74c3c;
+            --success-color: #2ecc71;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            padding-bottom: 90px;
+        }
+        header {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .welcome-box {
+            padding: 20px;
+            background: linear-gradient(135deg, #fff 0%, #fdfbf7 100%);
+            margin: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .section-title {
+            padding: 0 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card {
+            background: var(--card-bg);
+            margin: 15px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-right: 5px solid var(--primary-color);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .card:active {
+            transform: scale(0.98);
+        }
+        .financial-summary {
+            background: #111;
+            color: #d4af37;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .financial-summary h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+        }
+        /* شريط التنقل السفلي */
+        nav.bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            z-index: 1000;
+        }
+        nav.bottom-nav a {
+            text-decoration: none;
+            color: #777;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        nav.bottom-nav a.active {
+            color: var(--primary-color);
+        }
+    </style>
 </head>
 <body>
 
-<div class="app">
+    <header>
+        <div style="font-weight: bold; font-size: 1.1rem; color: var(--primary-color);">ELMOKADEM 🤝</div>
+        <div>🔔 ⚙️</div>
+    </header>
 
-  <header class="hero">
-    <h1 id="appTitle">دفتر الحجوزات للفوتوغرافر keroles khalf 📝</h1>
-    <p>إدارة الحجوزات والعملاء والمبالغ بسهولة</p>
-  </header>
-
-  <div class="actions">
-    <button class="primary" onclick="toggleForm()">➕ حجز جديد</button>
-    <button class="dark-btn" onclick="exportData()">💾 نسخة احتياطية</button>
-  </div>
-
-  <div class="stats-header">
-    <span style="font-size: 12px; color: var(--muted);">📊 ملخص الحسابات:</span>
-  </div>
-
-  <section class="stats">
-    <div class="stat teal">
-      <div class="label">👥 عدد الحجوزات</div>
-      <div class="number" id="statCount">0</div>
+    <div class="welcome-box">
+        <h2 style="margin: 0 0 5px 0;">مرحباً، إسلام المقدم 👋</h2>
+        <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem;" id="current-date">جاري تحميل التاريخ...</p>
     </div>
-    <div class="stat green">
-      <div class="label">💰 إجمالي الاتفاقات</div>
-      <div class="number" id="statTotal">0 ج.م</div>
+
+    <!-- قسم المالية (فلوس بره) -->
+    <div id="financial-section" style="display:none;">
+        <div class="financial-summary">
+            <p style="margin:0 0 5px 0; font-size: 0.9rem; color: #fff;">إجمالي الفلوس اللي بره (المتبقي للعملاء الذين تم تصويرهم)</p>
+            <h2 id="total-outstanding">0 ج.م</h2>
+        </div>
+        <div class="section-title">💵 قائمة الفلوس اللي بره</div>
+        <div id="unpaid-list">
+            <div class="loading">جاري جلب الحسابات من الشيت...</div>
+        </div>
     </div>
-    <div class="stat orange">
-      <div class="label">💵 إجمالي المحصل</div>
-      <div class="number" id="statPaid">0 ج.م</div>
+
+    <!-- القسم الرئيسي (المواعيد والحجوزات القادمة) -->
+    <div id="home-section">
+        <div class="section-title">📅 المواعيد والحجوزات القادمة</div>
+        <div id="upcoming-list">
+            <div class="loading">جاري جلب المواعيد من التقويم والشيت...</div>
+        </div>
     </div>
-    <div class="stat red">
-      <div class="label">⏳ إجمالي المتبقي</div>
-      <div class="number" id="statRemaining">0 ج.م</div>
-    </div>
-  </section>
 
-  <!-- نموذج حجز جديد -->
-  <section class="panel hidden" id="formPanel">
-    <h2>📝 تسجيل حجز جديد</h2>
-    <form id="bookingForm">
-      <div class="form-group">
-        <label>اسم العميل:</label>
-        <input type="text" id="clientName" placeholder="اسم العميل" required>
-      </div>
-      <div class="form-group">
-        <label>رقم الهاتف:</label>
-        <input type="tel" id="clientPhone" placeholder="010xxxxxxxx" required>
-      </div>
-      <div class="form-group">
-        <label>المناسبة / التفاصيل:</label>
-        <input type="text" id="eventType" placeholder="مثال: سيشن زفاف / قاعة" required>
-      </div>
-      <div class="form-group">
-        <label>تاريخ الحجز:</label>
-        <input type="date" id="eventDate" required>
-      </div>
-      <div class="form-group">
-        <label>المكان / ملاحظات:</label>
-        <input type="text" id="eventLoc" placeholder="المكان أو التفاصيل الإضافية">
-      </div>
-      <div class="form-group">
-        <label>الاتفاق الإجمالي (ج.م):</label>
-        <input type="number" id="totalPrice" placeholder="0" required oninput="calcRemaining()">
-      </div>
-      <div class="form-group">
-        <label>العربون / المدفوع (ج.م):</label>
-        <input type="number" id="paidPrice" placeholder="0" required oninput="calcRemaining()">
-      </div>
-      <div class="form-group">
-        <label>المتبقي أوتوماتيكياً (ج.م):</label>
-        <input type="number" id="remPrice" placeholder="0" readonly style="color:var(--orange); font-weight:bold;">
-      </div>
-      <button class="primary" type="submit" style="width:100%; margin-top:10px;">حفظ الحجز أوفلاين 💾</button>
-    </form>
-  </section>
+    <!-- شريط التنقل السفلي -->
+    <nav class="bottom-nav">
+        <a href="#" onclick="switchTab('home')" class="active" id="nav-home">🏠 الرئيسية</a>
+        <a href="#" onclick="switchTab('calendar')" id="nav-calendar">📅 التقويم</a>
+        <a href="#" onclick="switchTab('financial')" id="nav-financial">💰 المالية</a>
+    </nav>
 
-  <!-- قائمة الحجوزات -->
-  <section class="panel">
-    <h2>📋 سجل العملاء والحجوزات</h2>
-    <input type="search" id="searchInput" placeholder="🔎 ابحث باسم العميل أو الهاتف أو المناسبة..." oninput="filterBookings()">
-    
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>الاسم</th>
-            <th>المناسبة</th>
-            <th>التاريخ</th>
-            <th>الإجمالي</th>
-            <th>المدفوع</th>
-            <th>المتبقي</th>
-            <th>الهاتف</th>
-            <th>تحكم</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
-    </div>
-  </section>
+    <script>
+        const calendarURL = 'https://script.google.com/macros/s/AKfycbxfe8XkU07wPzvk6G32tJlYQ0N3ok7mh-xQoelL57PoC7XvcldsF6JAEHOdfH-EUP_-/exec';
+        const accountsURL = 'https://script.google.com/macros/s/AKfycbyOss4GHKdm4myQzM0ywac_vUyo6AgvH8jLj3yEfJOFYDLvKXEsc7i1Fw4HEmgz08Zj/exec';
 
-</div>
+        // عرض التاريخ الحالي
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').innerText = "اليوم: " + new Date().toLocaleDateString('ar-EG', options);
 
-<!-- Modal تعديل المبالغ -->
-<div class="modal-overlay" id="editModal">
-  <div class="modal-box">
-    <h3>✏️ تعديل مدفوعات العميل</h3>
-    <p id="modalClientName" style="color:var(--teal); font-weight:bold; font-size:13px;"></p>
-    <div class="form-group">
-      <label>إجمالي السعر الجديد:</label>
-      <input type="number" id="editTotal">
-    </div>
-    <div class="form-group">
-      <label>المدفوع الجديد (العربون + الدفعات):</label>
-      <input type="number" id="editPaid">
-    </div>
-    <button class="primary" onclick="saveEdit()" style="width:100%; margin-top:8px;">تحديث 💾</button>
-    <button class="dark-btn" onclick="closeModal()" style="width:100%; margin-top:6px;">إلغاء</button>
-  </div>
-</div>
+        let globalData = [];
 
-<script>
-  let bookings = JSON.parse(localStorage.getItem('my_offline_bookings') || '[]');
-  let activeEditIndex = null;
+        // جلب البيانات عند فتح الصفحة
+        window.onload = function() {
+            fetchData();
+        };
 
-  function saveToStorage() {
-    localStorage.setItem('my_offline_bookings', JSON.stringify(bookings));
-    render();
-  }
+        function fetchData() {
+            // جلب البيانات من شيت الحسابات والتقويم
+            fetch(accountsURL)
+                .then(response => response.json())
+                .then(data => {
+                    globalData = data;
+                    renderApp(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    document.getElementById('upcoming-list').innerHTML = '<div class="loading" style="color:red;">تعذر جلب البيانات. تأكد من إذن الـ Web App في السكريبت.</div>';
+                });
+        }
 
-  function calcRemaining() {
-    const total = Number(document.getElementById('totalPrice').value) || 0;
-    const paid = Number(document.getElementById('paidPrice').value) || 0;
-    document.getElementById('remPrice').value = Math.max(0, total - paid);
-  }
+        function renderApp(data) {
+            let upcomingHTML = '';
+            let unpaidHTML = '';
+            let totalUnpaid = 0;
+            const today = new Date();
 
-  function toggleForm() {
-    document.getElementById('formPanel').classList.toggle('hidden');
-  }
+            data.forEach(client => {
+                // افتراض هيكل الأعمدة بناءً على شيتك: الاسم، المناسبة، التاريخ، الإجمالي، المدفوع، المتبقي
+                let clientName = client.name || client.الاسم || 'عميل';
+                let eventType = client.event || client.نوع_المناسبة || 'سيشن تصوير';
+                let clientDate = client.date || client.التاريخ || '';
+                let remaining = parseFloat(client.remaining || client.المتبقي || 0);
 
-  document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const newItem = {
-      id: Date.now(),
-      name: document.getElementById('clientName').value,
-      phone: document.getElementById('clientPhone').value,
-      type: document.getElementById('eventType').value,
-      date: document.getElementById('eventDate').value,
-      loc: document.getElementById('eventLoc').value,
-      total: Number(document.getElementById('totalPrice').value) || 0,
-      paid: Number(document.getElementById('paidPrice').value) || 0
-    };
-    bookings.unshift(newItem);
-    saveToStorage();
-    this.reset();
-    toggleForm();
-  });
+                // فحص هل التاريخ عدى (تم التصوير) أم قادم
+                let isPast = new Date(clientDate) < today;
 
-  function deleteBooking(index) {
-    if (confirm('هل أنت تأكد من حذف هذا الحجز؟')) {
-      bookings.splice(index, 1);
-      saveToStorage();
-    }
-  }
+                if (!isPast) {
+                    // المواعيد القادمة للرئيسية
+                    upcomingHTML += `
+                        <div class="card" onclick='showDetails(${JSON.stringify(client)})'>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--primary-color); font-weight: bold;">
+                                <span>متبقي: ${remaining} ج.م</span>
+                                <span>${clientDate} 📅</span>
+                            </div>
+                            <h3 style="margin: 8px 0; font-size: 1.1rem;">${eventType} - ${clientName}</h3>
+                            <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">📞 ${client.phone || client.الهاتف || 'غير متوفر'}</p>
+                        </div>
+                    `;
+                } else if (remaining > 0) {
+                    // العملاء الذين تم تصويرهم وعليهم فلوس بره
+                    totalUnpaid += remaining;
+                    unpaidHTML += `
+                        <div class="card" style="border-right-color: var(--danger-color);" onclick='showDetails(${JSON.stringify(client)})'>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--danger-color); font-weight: bold;">
+                                <span>متبقي: ${remaining} ج.م</span>
+                                <span>تم التصوير ✅</span>
+                            </div>
+                            <h3 style="margin: 8px 0; font-size: 1.1rem;">${clientName} - ${eventType}</h3>
+                            <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">📅 ${clientDate} | 📞 ${client.phone || client.الهاتف || ''}</p>
+                        </div>
+                    `;
+                }
+            });
 
-  function openEdit(index) {
-    activeEditIndex = index;
-    const item = bookings[index];
-    document.getElementById('modalClientName').textContent = item.name;
-    document.getElementById('editTotal').value = item.total;
-    document.getElementById('editPaid').value = item.paid;
-    document.getElementById('editModal').style.display = 'flex';
-  }
+            document.getElementById('upcoming-list').innerHTML = upcomingHTML || '<div class="loading">لا توجد مواعيد قادمة مسجلة حالياً.</div>';
+            document.getElementById('unpaid-list').innerHTML = unpaidHTML || '<div class="loading">لا توجد مستحقات مالية متأخرة حالياً. ممتاز! 🎉</div>';
+            document.getElementById('total-outstanding').innerText = totalUnpaid.toLocaleString() + ' ج.م';
+        }
 
-  function closeModal() {
-    document.getElementById('editModal').style.display = 'none';
-  }
+        function switchTab(tab) {
+            document.querySelectorAll('.bottom-nav a').forEach(el => el.classList.remove('active'));
+            if(tab === 'home') {
+                document.getElementById('home-section').style.display = 'block';
+                document.getElementById('financial-section').style.display = 'none';
+                document.getElementById('nav-home').classList.add('active');
+            } else if(tab === 'financial') {
+                document.getElementById('home-section').style.display = 'none';
+                document.getElementById('financial-section').style.display = 'block';
+                document.getElementById('nav-financial').classList.add('active');
+            } else if(tab === 'calendar') {
+                // جلب بيانات التقويم المباشرة عبر رابط التقويم
+                window.open(calendarURL, '_blank');
+            }
+        }
 
-  function saveEdit() {
-    if (activeEditIndex !== null) {
-      bookings[activeEditIndex].total = Number(document.getElementById('editTotal').value) || 0;
-      bookings[activeEditIndex].paid = Number(document.getElementById('editPaid').value) || 0;
-      saveToStorage();
-      closeModal();
-    }
-  }
-
-  function filterBookings() {
-    const q = document.getElementById('searchInput').value.toLowerCase();
-    const filtered = bookings.filter(b => 
-      b.name.toLowerCase().includes(q) || 
-      b.phone.includes(q) || 
-      b.type.toLowerCase().includes(q)
-    );
-    renderTable(filtered);
-  }
-
-  function renderTable(dataList) {
-    const tbody = document.getElementById('tableBody');
-    tbody.innerHTML = '';
-
-    if (!dataList.length) {
-      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;">لا توجد حجوزات مسجلة حالياً.</td></tr>';
-      return;
-    }
-
-    dataList.forEach((b, idx) => {
-      const rem = Math.max(0, b.total - b.paid);
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td><b>${b.name}</b></td>
-        <td>${b.type}</td>
-        <td>${b.date}</td>
-        <td style="color:var(--green)">${b.total} ج.م</td>
-        <td style="color:var(--teal)">${b.paid} ج.م</td>
-        <td style="color:var(--orange)"><b>${rem} ج.م</b></td>
-        <td>${b.phone}</td>
-        <td>
-          <span class="badge-btn edit-btn" onclick="openEdit(${idx})">✏️ تعديل</span>
-          <span class="badge-btn del-btn" onclick="deleteBooking(${idx})">❌</span>
-        </td>
-      `;
-      tbody.appendChild(tr);
-    });
-  }
-
-  function render() {
-    let sumTotal = 0, sumPaid = 0;
-    bookings.forEach(b => {
-      sumTotal += b.total;
-      sumPaid += b.paid;
-    });
-    const sumRem = Math.max(0, sumTotal - sumPaid);
-
-    document.getElementById('statCount').textContent = bookings.length;
-    document.getElementById('statTotal').textContent = sumTotal.toLocaleString() + ' ج.م';
-    document.getElementById('statPaid').textContent = sumPaid.toLocaleString() + ' ج.م';
-    document.getElementById('statRemaining').textContent = sumRem.toLocaleString() + ' ج.م';
-
-    filterBookings();
-  }
-
-  function exportData() {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(bookings));
-    const dlAnchorElem = document.createElement('a');
-    dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", "backup_bookings_" + new Date().toISOString().slice(0,10) + ".json");
-    dlAnchorElem.click();
-  }
-
-  render();
-</script>
+        function showDetails(client) {
+            alert(`بيانات العميل الكاملة:\n\n👤 الاسم: ${client.name || client.الاسم}\n🎯 المناسبة: ${client.event || client.نوع_المناسبة}\n📅 التاريخ: ${client.date || client.التاريخ}\n💵 الإجمالي: ${client.total || client.المبلغ_الكلي}\n💳 المدفوع: ${client.paid || client.المبلغ_المدفوع}\n📌 المتبقي: ${client.remaining || client.المتبقي}\n📞 الهاتف: ${client.phone || client.الهاتف || 'غير متوفر'}`);
+        }
+    </script>
 </body>
 </html>
