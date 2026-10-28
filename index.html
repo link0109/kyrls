@@ -102,6 +102,7 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
+            cursor: pointer;
         }
         nav.bottom-nav a.active {
             color: var(--primary-color);
@@ -136,43 +137,36 @@
     <div id="home-section">
         <div class="section-title">📅 المواعيد والحجوزات القادمة</div>
         <div id="upcoming-list">
-            <div class="loading">جاري جلب المواعيد من التقويم والشيت...</div>
+            <div class="loading">جاري جلب المواعيد من الشيت...</div>
         </div>
     </div>
 
     <!-- شريط التنقل السفلي -->
     <nav class="bottom-nav">
-        <a href="#" onclick="switchTab('home')" class="active" id="nav-home">🏠 الرئيسية</a>
-        <a href="#" onclick="switchTab('calendar')" id="nav-calendar">📅 التقويم</a>
-        <a href="#" onclick="switchTab('financial')" id="nav-financial">💰 المالية</a>
+        <a onclick="switchTab('home')" class="active" id="nav-home">🏠 الرئيسية</a>
+        <a onclick="switchTab('calendar')" id="nav-calendar">📅 التقويم</a>
+        <a onclick="switchTab('financial')" id="nav-financial">💰 المالية</a>
     </nav>
 
     <script>
-        const calendarURL = 'https://script.google.com/macros/s/AKfycbxfe8XkU07wPzvk6G32tJlYQ0N3ok7mh-xQoelL57PoC7XvcldsF6JAEHOdfH-EUP_-/exec';
         const accountsURL = 'https://script.google.com/macros/s/AKfycbyOss4GHKdm4myQzM0ywac_vUyo6AgvH8jLj3yEfJOFYDLvKXEsc7i1Fw4HEmgz08Zj/exec';
 
-        // عرض التاريخ الحالي
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('current-date').innerText = "اليوم: " + new Date().toLocaleDateString('ar-EG', options);
 
-        let globalData = [];
-
-        // جلب البيانات عند فتح الصفحة
         window.onload = function() {
             fetchData();
         };
 
         function fetchData() {
-            // جلب البيانات من شيت الحسابات والتقويم
             fetch(accountsURL)
                 .then(response => response.json())
                 .then(data => {
-                    globalData = data;
                     renderApp(data);
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
-                    document.getElementById('upcoming-list').innerHTML = '<div class="loading" style="color:red;">تعذر جلب البيانات. تأكد من إذن الـ Web App في السكريبت.</div>';
+                    document.getElementById('upcoming-list').innerHTML = '<div class="loading" style="color:red;">تعذر جلب البيانات. تأكد من إذن الـ Web App في الشيت (Anyone).</div>';
                 });
         }
 
@@ -183,17 +177,14 @@
             const today = new Date();
 
             data.forEach(client => {
-                // افتراض هيكل الأعمدة بناءً على شيتك: الاسم، المناسبة، التاريخ، الإجمالي، المدفوع، المتبقي
                 let clientName = client.name || client.الاسم || 'عميل';
                 let eventType = client.event || client.نوع_المناسبة || 'سيشن تصوير';
                 let clientDate = client.date || client.التاريخ || '';
                 let remaining = parseFloat(client.remaining || client.المتبقي || 0);
 
-                // فحص هل التاريخ عدى (تم التصوير) أم قادم
                 let isPast = new Date(clientDate) < today;
 
                 if (!isPast) {
-                    // المواعيد القادمة للرئيسية
                     upcomingHTML += `
                         <div class="card" onclick='showDetails(${JSON.stringify(client)})'>
                             <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--primary-color); font-weight: bold;">
@@ -205,7 +196,6 @@
                         </div>
                     `;
                 } else if (remaining > 0) {
-                    // العملاء الذين تم تصويرهم وعليهم فلوس بره
                     totalUnpaid += remaining;
                     unpaidHTML += `
                         <div class="card" style="border-right-color: var(--danger-color);" onclick='showDetails(${JSON.stringify(client)})'>
@@ -236,8 +226,9 @@
                 document.getElementById('financial-section').style.display = 'block';
                 document.getElementById('nav-financial').classList.add('active');
             } else if(tab === 'calendar') {
-                // جلب بيانات التقويم المباشرة عبر رابط التقويم
-                window.open(calendarURL, '_blank');
+                document.getElementById('nav-calendar').classList.add('active');
+                // يفتح تطبيق تقويم جوجل الرسمي أو التقويم الافتراضي على الموبايل
+                window.location.href = "https://calendar.google.com";
             }
         }
 
